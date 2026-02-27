@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CondoGest — Gestão Condominial Inteligente | Offline-First</title>
+    <meta name="description" content="O primeiro SaaS de gestão condominial com tecnologia Offline-First. Portaria blindada, painel multitenant e Portal do Morador PWA.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="img_projeto/meu_logo.png" alt="CondoGest" onerror="this.style.display='none'">
+                <span class="nav-brand-text">CondoGest</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#funcionalidades">Funcionalidades</a>
+                <a href="#clientes">Clientes</a>
+                <a href="comecar.html" class="nav-cta">Começar Agora</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="hero" id="hero">
+        <div class="hero-bg">
+            <img src="img_projeto/fundo_tecnologico.jpg" alt="" onerror="this.style.display='none'">
+            <div class="hero-bg-overlay"></div>
+            <div class="hero-bg-fallback"></div>
+        </div>
+        <div class="hero-grid"></div>
+        <div class="container">
+            <div class="hero-text reveal">
+                <div class="hero-badge">SaaS Offline-First</div>
+                <h1>A Gestão do Seu Condomínio <span class="gradient-text">Nunca Para.</span> Nem Sem Internet.</h1>
+                <h2>O primeiro SaaS com tecnologia Offline-First. Garanta a segurança na portaria e o controlo na palma da mão, blindado contra falhas de conexão.</h2>
+                <div class="hero-actions">
+                    <a href="comecar.html" class="btn-primary">
+                        Agendar Demonstração Gratuita
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                    <button class="btn-secondary">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        Ver Vídeo
+                    </button>
+                </div>
+            </div>
+            <div class="hero-visual reveal reveal-delay-2">
+                <div class="mockup-desktop">
+                    <div class="mockup-desktop-bar">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <img src="img_projeto/Portaria1.jpg" alt="Painel de Controlo da Portaria">
+                </div>
+                <img src="img_projeto/sindico1.png" alt="App do Síndico — Dashboard" class="mockup-phone-hero">
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CLIENTS MARQUEE ==================== -->
+    <section class="clients" id="clientes">
+        <div class="container">
+            <p class="clients-title reveal">Síndicos e Administradoras que confiam no nosso sistema</p>
+        </div>
+        <div class="marquee-wrapper">
+            <!-- Linha 1 — esquerda para direita -->
+            <div class="marquee-track left">
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Residencial Aurora
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Condomínio Parque Real
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5h4v5m-4 0h4"/></svg>
+                    Torres do Vale
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Edifício São Gabriel
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Administradora Vanguard
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5h4v5m-4 0h4"/></svg>
+                    Splendore Residence
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Prime Park
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Vila das Flores
+                </div>
+                <!-- Duplicado para loop infinito -->
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Residencial Aurora
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Condomínio Parque Real
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5h4v5m-4 0h4"/></svg>
+                    Torres do Vale
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Edifício São Gabriel
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Administradora Vanguard
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5h4v5m-4 0h4"/></svg>
+                    Splendore Residence
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Prime Park
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Vila das Flores
+                </div>
+            </div>
+            <!-- Linha 2 — direita para esquerda -->
+            <div class="marquee-track right">
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5h4v5m-4 0h4"/></svg>
+                    Horizon Building
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Solar dos Ipês
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Riviera Condomínios
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5h4v5m-4 0h4"/></svg>
+                    Grand Ville Residence
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Jardim das Acácias
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Capital Admin
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5h4v5m-4 0h4"/></svg>
+                    Monte Azul
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Costa Verde Living
+                </div>
+                <!-- Duplicado para loop infinito -->
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5h4v5m-4 0h4"/></svg>
+                    Horizon Building
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Solar dos Ipês
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Riviera Condomínios
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5h4v5m-4 0h4"/></svg>
+                    Grand Ville Residence
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Jardim das Acácias
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg>
+                    Capital Admin
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5h4v5m-4 0h4"/></svg>
+                    Monte Azul
+                </div>
+                <div class="marquee-item">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                    Costa Verde Living
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FEATURES (BENTO GRID) ==================== -->
+    <section class="features" id="funcionalidades">
+        <div class="container">
+            <div class="section-header reveal">
+                <span class="section-label">Funcionalidades</span>
+                <h2>Tudo o que precisa. Numa única plataforma.</h2>
+                <p>Três pilares integrados — portaria, síndico e morador — que trabalham juntos pela eficiência total do seu condomínio.</p>
+            </div>
+
+            <div class="bento-grid">
+                <!-- Cartão 1 — A Portaria Blindada (full width) -->
+                <div class="bento-card card-large reveal" data-glow>
+                    <div class="card-portaria">
+                        <div class="portaria-images">
+                            <img src="img_projeto/Portaria2.jpg" alt="Portaria — Solicitações">
+                            <img src="img_projeto/Portaria3.jpg" alt="Portaria — Encomendas">
+                        </div>
+                        <div class="bento-card-content">
+                            <div class="bento-icon">🛡️</div>
+                            <h3>A Portaria Blindada</h3>
+                            <p>Resiliência Absoluta. Graças à tecnologia IndexedDB, a portaria regista visitantes e encomendas mesmo sem rede. Assim que a internet volta, a sincronização é automática.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cartão 2 — Painel do Síndico / Multitenant -->
+                <div class="bento-card reveal reveal-delay-1" data-glow>
+                    <div class="bento-card-content">
+                        <div class="bento-icon">⚡</div>
+                        <h3>Painel do Síndico — Multitenant</h3>
+                        <p>Controlo Centralizado. Administra 1 ou 100 condomínios com um único login. Arquitetura isolada que garante total privacidade e velocidade.</p>
+                    </div>
+                    <div class="sindico-images">
+                        <img src="img_projeto/sindico2.png" alt="App do Síndico — Moradores">
+                    </div>
+                </div>
+
+                <!-- Cartão 3 — Portal do Morador -->
+                <div class="bento-card reveal reveal-delay-2" data-glow>
+                    <div class="bento-card-content">
+                        <div class="bento-icon">📱</div>
+                        <h3>Portal do Morador</h3>
+                        <p>Autonomia na Palma da Mão. Reservas de espaços, comunicados oficiais e aprovação de visitantes diretamente pelo telemóvel do morador (Progressive Web App).</p>
+                    </div>
+                    <div class="morador-images">
+                        <img src="img_projeto/morador1.png" alt="Portal do Morador — Reservas">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== PROVA DE VALOR (LIGHT) ==================== -->
+    <section class="proof" id="prova">
+        <div class="container">
+            <div class="proof-header reveal">
+                <span class="section-label">Como Funciona</span>
+                <h2>Criado para quem valoriza a tranquilidade.</h2>
+                <p>Sem complexidade. Sem servidores locais. Apenas resultados.</p>
+            </div>
+            <div class="proof-grid">
+                <div class="proof-benefits">
+                    <div class="benefit-item reveal">
+                        <div class="benefit-icon icon-blue">🚀</div>
+                        <div>
+                            <h3>Implementação Imediata</h3>
+                            <p>Sem servidores locais. Aceda via browser ou instale no desktop da portaria. Começa a funcionar no mesmo dia.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item reveal reveal-delay-1">
+                        <div class="benefit-icon icon-violet">🔒</div>
+                        <div>
+                            <h3>Segurança Máxima</h3>
+                            <p>Dados protegidos com arquitetura isolada de nível empresarial. Cada condomínio tem o seu ambiente segregado.</p>
+                        </div>
+                    </div>
+                    <div class="benefit-item reveal reveal-delay-2">
+                        <div class="benefit-icon icon-green">✅</div>
+                        <div>
+                            <h3>Fim das Reclamações</h3>
+                            <p>Encomendas e visitantes geridos de forma impecável. Os moradores acompanham tudo em tempo real no telemóvel.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="proof-image reveal reveal-delay-1">
+                    <img src="img_projeto/Portaria4.jpg" alt="Portaria — Vista Completa">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FINAL CTA ==================== -->
+    <section class="final-cta" id="cta-final">
+        <div class="container">
+            <div class="reveal">
+                <span class="section-label" style="color: var(--cyan);">Comece Hoje</span>
+                <h2>Eleve o nível da administração do seu condomínio hoje mesmo.</h2>
+                <p>Junte-se a centenas de condomínios que já transformaram a sua gestão com a nossa plataforma.</p>
+                <a href="comecar.html" class="btn-primary">
+                    Começar Agora
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <span class="footer-brand">CondoGest</span>
+            <div class="footer-links">
+                <a href="#funcionalidades">Funcionalidades</a>
+                <a href="#clientes">Clientes</a>
+                <a href="comecar.html">Preços</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Privacidade</a>
+            </div>
+            <span class="footer-copy">© 2026 CondoGest. Todos os direitos reservados.</span>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        /* ---- Scroll Reveal ---- */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        /* ---- Bento Card + Pricing Card mouse glow ---- */
+        document.querySelectorAll('[data-glow], .pricing-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const r = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', (e.clientX - r.left) + 'px');
+                card.style.setProperty('--mouse-y', (e.clientY - r.top) + 'px');
+            });
+        });
+
+        /* ---- Mobile Nav Toggle ---- */
+        document.getElementById('navToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        /* ---- Navbar shrink on scroll ---- */
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+    </script>
+</body>
+</html>

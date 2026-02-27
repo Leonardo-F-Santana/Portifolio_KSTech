@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Começar Agora — CondoGest | Planos e Demonstração</title>
+    <meta name="description" content="Escolha o plano ideal para o seu condomínio. Agende uma demonstração gratuita do CondoGest.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="img_projeto/meu_logo.png" alt="CondoGest" onerror="this.style.display='none'">
+                <span class="nav-brand-text">CondoGest</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#funcionalidades">Funcionalidades</a>
+                <a href="index.html#clientes">Clientes</a>
+                <a href="comecar.html" class="nav-cta">Começar Agora</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="page-comecar">
+
+        <!-- ==================== PRICING ==================== -->
+        <section class="pricing" id="precos">
+            <div class="container">
+                <div class="section-header reveal">
+                    <span class="section-label">Planos e Preços</span>
+                    <h2>Invista no que realmente importa: tranquilidade.</h2>
+                    <p>Escolha o plano que se adapta ao tamanho do seu condomínio. Sem compromisso — cancele a qualquer momento.</p>
+                </div>
+
+                <div class="pricing-grid">
+                    <!-- Plano 1 -->
+                    <div class="pricing-card reveal" data-glow>
+                        <h3>Essencial</h3>
+                        <p class="pricing-desc">Até 100 unidades</p>
+                        <div class="pricing-price">R$ 199<span>/mês</span></div>
+                        <ul class="pricing-features">
+                            <li>Portaria Offline-First</li>
+                            <li>Gestão de Visitantes</li>
+                            <li>Gestão de Encomendas</li>
+                            <li>Portal do Morador (PWA)</li>
+                            <li>Painel do Síndico</li>
+                            <li>Suporte por e-mail</li>
+                        </ul>
+                        <a href="#agendar" class="btn-secondary">Escolher Plano</a>
+                    </div>
+
+                    <!-- Plano 2 (Destaque) -->
+                    <div class="pricing-card featured reveal reveal-delay-1" data-glow>
+                        <span class="pricing-popular">Mais Popular</span>
+                        <h3>Profissional</h3>
+                        <p class="pricing-desc">101 a 300 unidades</p>
+                        <div class="pricing-price">R$ 349<span>/mês</span></div>
+                        <ul class="pricing-features">
+                            <li>Tudo do plano Essencial</li>
+                            <li>Multitenant (múltiplos condomínios)</li>
+                            <li>Reservas de espaços comuns</li>
+                            <li>Avisos e comunicados</li>
+                            <li>Relatórios avançados</li>
+                            <li>Suporte prioritário</li>
+                        </ul>
+                        <a href="#agendar" class="btn-primary">Escolher Plano</a>
+                    </div>
+
+                    <!-- Plano 3 -->
+                    <div class="pricing-card reveal reveal-delay-2" data-glow>
+                        <h3>Enterprise</h3>
+                        <p class="pricing-desc">Acima de 300 unidades</p>
+                        <div class="pricing-price">Personalizado</div>
+                        <ul class="pricing-features">
+                            <li>Tudo do plano Profissional</li>
+                            <li>White-label (marca própria)</li>
+                            <li>Importação em massa</li>
+                            <li>API de integração</li>
+                            <li>SLA dedicado</li>
+                            <li>Gestor de conta exclusivo</li>
+                        </ul>
+                        <a href="#agendar" class="btn-secondary">Falar com Consultor</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== CONTACT / SCHEDULE ==================== -->
+        <section class="contact-section" id="agendar">
+            <div class="container">
+                <div class="contact-wrapper">
+                    <div class="contact-info reveal">
+                        <span class="section-label" style="color: var(--cyan);">Demonstração</span>
+                        <h2>Agende a sua Demonstração Gratuita</h2>
+                        <p>Preencha o formulário e um dos nossos consultores entrará em contacto para mostrar como o CondoGest pode transformar a gestão do seu condomínio.</p>
+                        <div class="contact-perks">
+                            <div class="contact-perk">
+                                <div class="contact-perk-icon">🎯</div>
+                                <div>
+                                    <h4>Demonstração personalizada</h4>
+                                    <p>Adaptada ao tamanho e às necessidades do seu condomínio.</p>
+                                </div>
+                            </div>
+                            <div class="contact-perk">
+                                <div class="contact-perk-icon">⏱️</div>
+                                <div>
+                                    <h4>Implementação em 24h</h4>
+                                    <p>Sem servidores. Configuramos tudo e entrega ao seu condomínio no mesmo dia.</p>
+                                </div>
+                            </div>
+                            <div class="contact-perk">
+                                <div class="contact-perk-icon">🤝</div>
+                                <div>
+                                    <h4>Sem compromisso</h4>
+                                    <p>Teste gratuitamente durante 14 dias. Sem cartão de crédito.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact-form reveal reveal-delay-1" id="contactForm" onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" name="nome" placeholder="Ex: João Silva" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="joao@condominio.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone / WhatsApp</label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="(11) 99999-9999">
+                        </div>
+                        <div class="form-group">
+                            <label for="moradores">Quantidade de Unidades</label>
+                            <select id="moradores" name="moradores">
+                                <option value="" disabled selected>Selecione...</option>
+                                <option value="ate-50">Até 50 unidades</option>
+                                <option value="51-100">51 a 100 unidades</option>
+                                <option value="101-200">101 a 200 unidades</option>
+                                <option value="201-300">201 a 300 unidades</option>
+                                <option value="300+">Acima de 300 unidades</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="mensagem">Mensagem (opcional)</label>
+                            <textarea id="mensagem" name="mensagem" placeholder="Conte-nos sobre o seu condomínio..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary">
+                            Falar com Consultor
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <span class="footer-brand">CondoGest</span>
+            <div class="footer-links">
+                <a href="index.html#funcionalidades">Funcionalidades</a>
+                <a href="index.html#clientes">Clientes</a>
+                <a href="comecar.html#precos">Preços</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Privacidade</a>
+            </div>
+            <span class="footer-copy">© 2026 CondoGest. Todos os direitos reservados.</span>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        /* ---- Scroll Reveal ---- */
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.12 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        /* ---- Card mouse glow ---- */
+        document.querySelectorAll('[data-glow]').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const r = card.getBoundingClientRect();
+                card.style.setProperty('--mouse-x', (e.clientX - r.left) + 'px');
+                card.style.setProperty('--mouse-y', (e.clientY - r.top) + 'px');
+            });
+        });
+
+        /* ---- Mobile Nav Toggle ---- */
+        document.getElementById('navToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        /* ---- Navbar shrink on scroll ---- */
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        /* ---- Form submit handler ---- */
+        function handleSubmit(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalHTML = btn.innerHTML;
+            btn.innerHTML = '✓ Mensagem Enviada!';
+            btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+            btn.disabled = true;
+            setTimeout(() => {
+                btn.innerHTML = originalHTML;
+                btn.style.background = '';
+                btn.disabled = false;
+                e.target.reset();
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

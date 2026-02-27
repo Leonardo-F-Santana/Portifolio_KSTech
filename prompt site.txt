@@ -1,0 +1,76 @@
+Função e Objetivo:
+Atua como um Web Designer de elite e Copywriter focado em SaaS B2B. O teu objetivo é criar a estrutura, o texto e o design de uma landing page de alta conversão para um Sistema de Gestão Condominial.
+
+Direção de Arte e Referências de Estilo:
+O design deve cruzar as estéticas de três sites de referência:
+
+Zoox.com: Sensação de alta tecnologia, inovação e fluidez. Uso de secções imersivas e elementos visuais de ponta.
+
+Cosmos.so: Minimalismo sofisticado, layout em grelha (bento-box grid) assimétrica para exibir funcionalidades, modo escuro (dark mode) elegante com elementos em destaque (glow) e imagens flutuantes.
+
+Squarespace: Tipografia arrojada (sans-serif moderna), excelente uso de espaço em branco (negative space) nas secções de conteúdo, e um tom altamente profissional e fiável.
+
+Produto: Um SaaS de gestão de condomínios focado na resiliência e produtividade. Principais diferenciais: Portaria que funciona 100% offline (sincroniza depois), painel multilocatário (multitenant) para síndicos gerirem vários condomínios num único ecrã, e um Portal do Morador completo (PWA).
+
+Instruções Estritas de Conteúdo Visual (Arquivos Locais):
+Eu tenho as imagens reais da interface do meu sistema dentro da pasta img_projeto/. NÃO inventes imagens genéricas de bancos de imagens (unsplash, etc) para mostrar o sistema. Deves obrigatoriamente referenciar as imagens abaixo nos caminhos das tags <img>.
+Nota para a IA: As imagens moradorX.png e sindicoX.png estão com fundo transparente, portanto, aplica-lhes um efeito de sombra suave (drop shadow) ou coloca-as dentro de frames de smartphones elegantes para aproveitar a transparência.
+
+Estrutura da Página Solicitada (com Textos e Imagens):
+
+1. Secção Hero (Inspirada na Zoox)
+
+Visual: Um design imersivo em ecrã inteiro. Um fundo escuro e sofisticado. Em grande destaque, cria um mockup de um monitor de computador (Desktop) a exibir a imagem img_projeto/portaria1.jpg. Ligeiramente sobreposto e flutuando ao lado do monitor, coloca um mockup de smartphone a exibir a imagem img_projeto/sindico1.png.
+
+Headline (H1): A Gestão do Seu Condomínio Nunca Para. Nem Sem Internet.
+
+Sub-headline (H2): O primeiro SaaS com tecnologia Offline-First. Garanta a segurança na portaria e o controlo na palma da mão, blindado contra falhas de conexão.
+
+Call to Action (Botão Principal): Agendar Demonstração Gratuita.
+
+2. Secção de Funcionalidades (Inspirada no Cosmos.so)
+
+Visual: Um layout em grelha escura flutuante (bento grid). Cada "cartão" tem um efeito de vidro (glassmorphism) e uma micro-animação ao passar o rato (hover).
+
+Cartão 1 (A Portaria Blindada):
+
+Imagem: Usa as imagens img_projeto/portaria2.jpg e img_projeto/portaria3.jpg (podes fazer um efeito onde uma sobrepõe a outra ou um slider automático).
+
+Texto: Resiliência Absoluta. Graças à tecnologia IndexedDB, a portaria regista visitantes e encomendas mesmo sem rede. Assim que a internet volta, a sincronização é automática.
+
+Cartão 2 (Painel do Síndico / Multitenant):
+
+Imagem: Mockup flutuante de telemóvel a exibir a imagem img_projeto/sindico2.png (aproveitando o fundo transparente) e img_projeto/sindico3.png a aparecer parcialmente atrás.
+
+Texto: Controlo Centralizado. Administra 1 ou 100 condomínios com um único login. Arquitetura isolada que garante total privacidade e velocidade.
+
+Cartão 3 (Portal do Morador):
+
+Imagem: Mockups de ecrãs de telemóvel a utilizar as imagens img_projeto/morador1.png, img_projeto/morador2.png e img_projeto/morador3.png. Organiza-as de forma dinâmica e sobreposta (cascata).
+
+Texto: Autonomia na Palma da Mão. Reservas de espaços, comunicados oficiais e aprovação de visitantes diretamente pelo telemóvel do morador (Progressive Web App).
+
+3. Secção de "Como Funciona" / Prova de Valor (Inspirada no Squarespace)
+
+Visual: Fundo branco ou cinza muito claro, quebrando o tom escuro das secções anteriores para dar descanso visual. Tipografia grande e limpa. Exibe as restantes imagens do sistema (img_projeto/portaria4.jpg, img_projeto/sindico4.png, img_projeto/morador4.png e img_projeto/morador5.png) organizadas num layout assimétrico ao lado dos textos.
+
+Texto Principal: Criado para quem valoriza a tranquilidade.
+
+Lista de Benefícios:
+
+Implementação Imediata: Sem servidores locais. Aceda via browser ou instale no desktop da portaria.
+
+Segurança Máxima: Dados protegidos com arquitetura isolada de nível empresarial.
+
+Fim das Reclamações: Encomendas e visitantes geridos de forma impecável.
+
+4. Rodapé (Footer) e CTA Final
+
+Visual: Design limpo, dark mode, linhas finas de separação.
+
+Texto: Eleve o nível da administração do seu condomínio hoje mesmo.
+
+Botão: Começar Agora.
+
+Instruções de Saída:
+Gera o código (React/Tailwind ou HTML/CSS) para esta página. Aplica animações suaves de entrada (fade-up, float) para as imagens .png transparentes. Define os caminhos (src) das imagens estritamente como especificado (ex: src="img_projeto/morador1.png").
