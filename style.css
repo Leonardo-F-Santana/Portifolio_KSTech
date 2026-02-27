@@ -357,37 +357,57 @@ button { font-family: inherit; }
     max-width: 420px;
 }
 
-/* Card 1 — Portaria (full width dual image) */
+/* Card 1 — Portaria (full width, dual image reveal on hover) */
 .card-portaria { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-.portaria-images { position: relative; height: 300px; }
+.portaria-images { position: relative; height: 300px; overflow: hidden; border-radius: var(--radius-md); }
 .portaria-images img {
     position: absolute; border-radius: var(--radius-md);
     box-shadow: 0 20px 60px rgba(0,0,0,0.45);
-    transition: transform 0.6s;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+/* Static positions */
 .portaria-images img:first-child { top: 0; left: 0; width: 88%; z-index: 2; }
-.portaria-images img:last-child  { bottom: 0; right: 0; width: 80%; z-index: 1; opacity: 0.6; }
-.bento-card:hover .portaria-images img:first-child { transform: translate(-4px, -6px) rotate(-1deg); }
-.bento-card:hover .portaria-images img:last-child  { transform: translate(4px, 6px) rotate(1deg); opacity: 0.85; }
+.portaria-images img:last-child  { bottom: 0; right: 0; width: 80%; z-index: 1; opacity: 0.5; }
+/* Hover: slides apart to reveal the second image */
+.bento-card:hover .portaria-images img:first-child { transform: translate(-8px, -8px) rotate(-1.5deg) scale(1.02); }
+.bento-card:hover .portaria-images img:last-child  { transform: translate(8px, 8px) rotate(1.5deg) scale(1.02); opacity: 0.9; }
 
-/* Card 2 — Síndico */
-.sindico-images { position: relative; height: 300px; margin-top: 16px; display: flex; justify-content: center; }
+/* Card 2 — Síndico (3 phones, static → fan/parallax on hover) */
+.sindico-images { position: relative; height: 320px; margin-top: 16px; display: flex; justify-content: center; }
 .sindico-images img {
     position: absolute;
     filter: drop-shadow(0 24px 48px rgba(0,0,0,0.45));
-    animation: float 6s ease-in-out infinite;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.5s ease;
+    /* NO animation by default — static */
 }
-.sindico-images img:first-child { left: 15%; top: 0; width: 58%; z-index: 2; }
-.sindico-images img:last-child  { right: 10%; top: 24px; width: 50%; z-index: 1; opacity: 0.5; animation-delay: -3s; }
+/* Static stacked positions (3 phones overlapping centrally) */
+.sindico-images img:nth-child(1) { left: 50%; top: 10px; transform: translateX(-50%) rotate(-2deg); width: 44%; z-index: 3; }
+.sindico-images img:nth-child(2) { left: 50%; top: 16px; transform: translateX(-46%); width: 42%; z-index: 2; opacity: 0.7; }
+.sindico-images img:nth-child(3) { left: 50%; top: 22px; transform: translateX(-54%); width: 40%; z-index: 1; opacity: 0.5; }
+/* Hover: fan out into a spread */
+.bento-card:hover .sindico-images img:nth-child(1) { transform: translateX(-50%) rotate(0deg) translateY(-6px); }
+.bento-card:hover .sindico-images img:nth-child(2) { transform: translateX(-20%) rotate(6deg) translateY(4px); opacity: 1; }
+.bento-card:hover .sindico-images img:nth-child(3) { transform: translateX(-80%) rotate(-6deg) translateY(4px); opacity: 1; }
 
-/* Card 3 — Morador */
-.morador-images { position: relative; height: 300px; margin-top: 16px; display: flex; justify-content: center; }
+/* Card 3 — Morador (3 phones, static → slide/spread on hover) */
+.morador-images { position: relative; height: 320px; margin-top: 16px; display: flex; justify-content: center; }
 .morador-images img {
     position: absolute;
     filter: drop-shadow(0 24px 48px rgba(0,0,0,0.45));
-    animation: float 6s ease-in-out infinite;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.5s ease;
+    /* NO animation by default — static */
 }
-.morador-images img:first-child { left: 50%; top: 10px; transform: translateX(-50%); width: 55%; z-index: 2; }
+/* Static cascade positions */
+.morador-images img:nth-child(1) { left: 50%; top: 5px; transform: translateX(-50%); width: 44%; z-index: 3; }
+.morador-images img:nth-child(2) { left: 50%; top: 14px; transform: translateX(-44%); width: 42%; z-index: 2; opacity: 0.7; }
+.morador-images img:nth-child(3) { left: 50%; top: 24px; transform: translateX(-56%); width: 40%; z-index: 1; opacity: 0.5; }
+/* Hover: slide apart dynamically */
+.bento-card:hover .morador-images img:nth-child(1) { transform: translateX(-50%) scale(1.03) translateY(-4px); }
+.bento-card:hover .morador-images img:nth-child(2) { transform: translateX(-15%) rotate(5deg) translateY(8px); opacity: 1; }
+.bento-card:hover .morador-images img:nth-child(3) { transform: translateX(-85%) rotate(-5deg) translateY(8px); opacity: 1; }
 
 /* ========== PROOF / HOW IT WORKS (LIGHT) ========== */
 .proof {
@@ -434,11 +454,26 @@ button { font-family: inherit; }
     font-size: 0.88rem; color: var(--text-dark-secondary); line-height: 1.65;
 }
 .proof-image {
-    position: relative;
+    position: relative; min-height: 480px;
 }
 .proof-image img {
-    width: 100%; border-radius: var(--radius-lg);
+    border-radius: var(--radius-lg);
     box-shadow: 0 24px 80px rgba(0,0,0,0.12);
+}
+.proof-image .proof-img-desktop {
+    width: 80%; position: relative; z-index: 1;
+}
+.proof-image .proof-img-phone {
+    position: absolute; width: 35%;
+    filter: drop-shadow(0 16px 40px rgba(0,0,0,0.18));
+    z-index: 2; border-radius: 0;
+    box-shadow: none;
+}
+.proof-image .proof-img-phone:nth-of-type(2) {
+    right: -5%; top: 10%;
+}
+.proof-image .proof-img-phone:nth-of-type(3) {
+    right: 10%; bottom: 0;
 }
 
 /* ========== FINAL CTA ========== */
