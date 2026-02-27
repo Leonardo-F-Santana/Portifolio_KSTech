@@ -357,57 +357,100 @@ button { font-family: inherit; }
     max-width: 420px;
 }
 
-/* Card 1 — Portaria (full width, dual image reveal on hover) */
+/* Card 1 — Portaria (full width, slide reveal on hover) */
 .card-portaria { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-.portaria-images { position: relative; height: 300px; overflow: hidden; border-radius: var(--radius-md); }
+.portaria-images { position: relative; height: 300px; }
 .portaria-images img {
     position: absolute; border-radius: var(--radius-md);
     box-shadow: 0 20px 60px rgba(0,0,0,0.45);
     transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 opacity 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
-/* Static positions */
-.portaria-images img:first-child { top: 0; left: 0; width: 88%; z-index: 2; }
-.portaria-images img:last-child  { bottom: 0; right: 0; width: 80%; z-index: 1; opacity: 0.5; }
-/* Hover: slides apart to reveal the second image */
-.bento-card:hover .portaria-images img:first-child { transform: translate(-8px, -8px) rotate(-1.5deg) scale(1.02); }
-.bento-card:hover .portaria-images img:last-child  { transform: translate(8px, 8px) rotate(1.5deg) scale(1.02); opacity: 0.9; }
+/* Static: front image covers the back */
+.portaria-images img:first-child { top: 0; left: 0; width: 90%; z-index: 2; }
+.portaria-images img:last-child  { top: 10px; left: 5%; width: 88%; z-index: 1; opacity: 0.35; }
+/* Hover: front slides away to reveal the back */
+.bento-card:hover .portaria-images img:first-child {
+    transform: translateX(-12px) translateY(-10px) rotate(-2deg) scale(0.95);
+}
+.bento-card:hover .portaria-images img:last-child {
+    transform: translateX(12px) translateY(6px) rotate(1.5deg);
+    opacity: 1;
+}
 
-/* Card 2 — Síndico (3 phones, static → fan/parallax on hover) */
-.sindico-images { position: relative; height: 320px; margin-top: 16px; display: flex; justify-content: center; }
+/* Card 2 — Síndico (3 phones stacked → open deck on hover) */
+.sindico-images {
+    position: relative; height: 340px; margin-top: 16px;
+    display: flex; justify-content: center;
+}
 .sindico-images img {
-    position: absolute;
-    filter: drop-shadow(0 24px 48px rgba(0,0,0,0.45));
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    position: absolute; width: 40%;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
                 opacity 0.5s ease;
-    /* NO animation by default — static */
 }
-/* Static stacked positions (3 phones overlapping centrally) */
-.sindico-images img:nth-child(1) { left: 50%; top: 10px; transform: translateX(-50%) rotate(-2deg); width: 44%; z-index: 3; }
-.sindico-images img:nth-child(2) { left: 50%; top: 16px; transform: translateX(-46%); width: 42%; z-index: 2; opacity: 0.7; }
-.sindico-images img:nth-child(3) { left: 50%; top: 22px; transform: translateX(-54%); width: 40%; z-index: 1; opacity: 0.5; }
-/* Hover: fan out into a spread */
-.bento-card:hover .sindico-images img:nth-child(1) { transform: translateX(-50%) rotate(0deg) translateY(-6px); }
-.bento-card:hover .sindico-images img:nth-child(2) { transform: translateX(-20%) rotate(6deg) translateY(4px); opacity: 1; }
-.bento-card:hover .sindico-images img:nth-child(3) { transform: translateX(-80%) rotate(-6deg) translateY(4px); opacity: 1; }
+/* Static: 3 phones stacked centrally */
+.sindico-images img:nth-child(1) {
+    left: 50%; top: 15px; z-index: 3;
+    transform: translateX(-50%);
+}
+.sindico-images img:nth-child(2) {
+    left: 50%; top: 22px; z-index: 2;
+    transform: translateX(-47%); opacity: 0.65;
+}
+.sindico-images img:nth-child(3) {
+    left: 50%; top: 28px; z-index: 1;
+    transform: translateX(-53%); opacity: 0.4;
+}
+/* Hover: fan out like an open deck — wide spread */
+.bento-card:hover .sindico-images img:nth-child(1) {
+    transform: translateX(-50%) translateY(-8px);
+}
+.bento-card:hover .sindico-images img:nth-child(2) {
+    transform: translateX(-10%) rotate(8deg) translateY(10px);
+    opacity: 1;
+}
+.bento-card:hover .sindico-images img:nth-child(3) {
+    transform: translateX(-90%) rotate(-8deg) translateY(10px);
+    opacity: 1;
+}
 
-/* Card 3 — Morador (3 phones, static → slide/spread on hover) */
-.morador-images { position: relative; height: 320px; margin-top: 16px; display: flex; justify-content: center; }
-.morador-images img {
-    position: absolute;
-    filter: drop-shadow(0 24px 48px rgba(0,0,0,0.45));
-    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                opacity 0.5s ease;
-    /* NO animation by default — static */
+/* Card 3 — Morador (3 phones stacked → open deck on hover) */
+.morador-images {
+    position: relative; height: 340px; margin-top: 16px;
+    display: flex; justify-content: center;
 }
-/* Static cascade positions */
-.morador-images img:nth-child(1) { left: 50%; top: 5px; transform: translateX(-50%); width: 44%; z-index: 3; }
-.morador-images img:nth-child(2) { left: 50%; top: 14px; transform: translateX(-44%); width: 42%; z-index: 2; opacity: 0.7; }
-.morador-images img:nth-child(3) { left: 50%; top: 24px; transform: translateX(-56%); width: 40%; z-index: 1; opacity: 0.5; }
-/* Hover: slide apart dynamically */
-.bento-card:hover .morador-images img:nth-child(1) { transform: translateX(-50%) scale(1.03) translateY(-4px); }
-.bento-card:hover .morador-images img:nth-child(2) { transform: translateX(-15%) rotate(5deg) translateY(8px); opacity: 1; }
-.bento-card:hover .morador-images img:nth-child(3) { transform: translateX(-85%) rotate(-5deg) translateY(8px); opacity: 1; }
+.morador-images img {
+    position: absolute; width: 40%;
+    filter: drop-shadow(0 20px 40px rgba(0,0,0,0.5));
+    transition: transform 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.5s ease;
+}
+/* Static: 3 phones stacked centrally */
+.morador-images img:nth-child(1) {
+    left: 50%; top: 15px; z-index: 3;
+    transform: translateX(-50%);
+}
+.morador-images img:nth-child(2) {
+    left: 50%; top: 22px; z-index: 2;
+    transform: translateX(-47%); opacity: 0.65;
+}
+.morador-images img:nth-child(3) {
+    left: 50%; top: 28px; z-index: 1;
+    transform: translateX(-53%); opacity: 0.4;
+}
+/* Hover: slide apart — open deck effect */
+.bento-card:hover .morador-images img:nth-child(1) {
+    transform: translateX(-50%) translateY(-8px);
+}
+.bento-card:hover .morador-images img:nth-child(2) {
+    transform: translateX(-10%) rotate(8deg) translateY(10px);
+    opacity: 1;
+}
+.bento-card:hover .morador-images img:nth-child(3) {
+    transform: translateX(-90%) rotate(-8deg) translateY(10px);
+    opacity: 1;
+}
 
 /* ========== PROOF / HOW IT WORKS (LIGHT) ========== */
 .proof {
@@ -496,6 +539,32 @@ button { font-family: inherit; }
 .final-cta p {
     font-size: 1.05rem; color: var(--text-secondary); margin-bottom: 40px;
     max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7;
+}
+/* Cosmos.so-inspired arrow hover micro-interaction */
+.final-cta .btn-primary {
+    gap: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, gap 0.35s ease;
+}
+.final-cta .btn-primary .btn-icon {
+    width: 20px; height: 20px;
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.final-cta .btn-primary:hover {
+    gap: 18px;
+}
+.final-cta .btn-primary:hover .btn-icon {
+    transform: translateX(4px);
+}
+/* Hero button: arrow slides but button width stays fixed */
+.hero .btn-primary {
+    min-width: 340px; justify-content: center;
+}
+.hero .btn-primary .btn-icon {
+    width: 20px; height: 20px;
+    transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.hero .btn-primary:hover .btn-icon {
+    transform: translateX(6px);
 }
 
 /* ========== FOOTER ========== */
@@ -695,21 +764,29 @@ button { font-family: inherit; }
 .contact-form .btn-primary { width: 100%; justify-content: center; margin-top: 8px; }
 
 /* ========== RESPONSIVE ========== */
+
+/* ---- Tablet Landscape (≤1024px) ---- */
 @media (max-width: 1024px) {
     .hero .container { flex-direction: column; text-align: center; }
     .hero-text { max-width: 100%; }
     .hero-actions { justify-content: center; }
+    .hero .btn-primary { min-width: auto; }
     .hero-visual { width: 100%; max-width: 540px; margin: 0 auto; }
     .mockup-phone-hero { right: -10px; width: 140px; }
     .card-portaria { grid-template-columns: 1fr; }
-    .portaria-images { height: 230px; }
+    .portaria-images { height: 240px; }
     .proof-grid { grid-template-columns: 1fr; }
     .proof-image { margin-top: 40px; }
+    .proof-image .proof-img-desktop { width: 90%; }
+    .proof-image .proof-img-phone { width: 30%; }
     .pricing-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
     .contact-wrapper { grid-template-columns: 1fr; }
+    .contact-info { max-width: 100%; }
 }
 
+/* ---- Tablet Portrait (≤768px) ---- */
 @media (max-width: 768px) {
+    /* Navbar mobile */
     .nav-links { display: none; }
     .nav-toggle { display: block; }
     .nav-links.open {
@@ -719,17 +796,90 @@ button { font-family: inherit; }
         padding: 24px; gap: 20px;
         border-bottom: 1px solid var(--glass-border);
     }
+
+    /* Hero */
+    .hero { padding: 110px 0 70px; }
+    .hero h1 { font-size: 2rem; }
+    .hero h2 { font-size: 0.95rem; }
+    .hero .btn-primary { min-width: auto; padding: 14px 28px; font-size: 0.9rem; }
+    .hero-visual { max-width: 420px; }
+    .mockup-desktop { margin: 0 auto; }
+
+    /* Marquee */
+    .marquee-item { padding: 10px 20px; font-size: 0.8rem; }
+
+    /* Bento grid */
     .bento-grid { grid-template-columns: 1fr; }
     .bento-card { padding: 28px; }
-    .sindico-images, .morador-images { height: 240px; }
-    .hero h1 { font-size: 2rem; }
-    .footer .container { flex-direction: column; text-align: center; }
+    .bento-card-content h3 { font-size: 1.15rem; }
+    .sindico-images, .morador-images { height: 280px; }
+    .sindico-images img, .morador-images img { width: 42%; }
+
+    /* Proof */
+    .proof { padding: 80px 0; }
+    .proof-header { margin-bottom: 48px; }
+    .proof-image { min-height: 360px; }
+    .proof-image .proof-img-desktop { width: 95%; }
+    .proof-image .proof-img-phone { width: 32%; }
+    .benefit-item { padding: 16px 20px; }
+
+    /* Final CTA */
+    .final-cta { padding: 80px 0; }
+    .final-cta h2 { font-size: 1.8rem; }
+    .final-cta .btn-primary { padding: 14px 28px; font-size: 0.9rem; }
+
+    /* Footer */
+    .footer .container { flex-direction: column; text-align: center; gap: 16px; }
+    .footer-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+    /* Pricing */
+    .pricing { padding: 60px 0 80px; }
+    .pricing-card { padding: 32px 24px; }
+
+    /* Form */
+    .contact-section { padding: 60px 0 80px; }
+    .contact-form { padding: 28px; }
 }
 
+/* ---- Mobile (≤480px) ---- */
 @media (max-width: 480px) {
-    .mockup-phone-hero { width: 110px; right: -5px; bottom: -10px; }
+    .container { padding: 0 16px; }
+
+    /* Hero */
+    .hero { padding: 100px 0 60px; }
+    .hero h1 { font-size: 1.7rem; }
+    .hero h2 { font-size: 0.88rem; margin-bottom: 28px; }
+    .hero-badge { font-size: 0.65rem; padding: 6px 14px; }
+    .hero-actions { flex-direction: column; gap: 12px; width: 100%; }
+    .hero .btn-primary, .hero .btn-secondary { width: 100%; justify-content: center; min-width: auto; }
+    .hero-visual { max-width: 320px; }
+    .mockup-phone-hero { width: 100px; right: -5px; bottom: -10px; }
+
+    /* Bento */
+    .section-header h2 { font-size: 1.5rem; }
+    .bento-card { padding: 22px; }
     .portaria-images { height: 200px; }
-    .sindico-images, .morador-images { height: 200px; }
-    .benefit-item { flex-direction: column; }
-    .hero-badge { font-size: 0.65rem; }
+    .sindico-images, .morador-images { height: 240px; }
+    .sindico-images img, .morador-images img { width: 45%; }
+
+    /* Proof */
+    .proof-header h2 { font-size: 1.8rem; }
+    .proof-image { min-height: 280px; }
+    .proof-image .proof-img-desktop { width: 100%; }
+    .proof-image .proof-img-phone { width: 28%; }
+    .benefit-item { flex-direction: column; text-align: center; }
+    .benefit-icon { margin: 0 auto; }
+
+    /* CTA */
+    .final-cta h2 { font-size: 1.5rem; }
+    .final-cta p { font-size: 0.9rem; }
+    .final-cta .btn-primary { width: 100%; justify-content: center; font-size: 0.9rem; }
+
+    /* Pricing */
+    .pricing-grid { max-width: 100%; }
+    .pricing-price { font-size: 2rem; }
+
+    /* Form */
+    .contact-form { padding: 20px; }
+    .form-group input, .form-group select, .form-group textarea { padding: 12px 14px; font-size: 0.9rem; }
 }
