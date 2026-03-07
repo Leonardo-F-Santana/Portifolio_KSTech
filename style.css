@@ -95,7 +95,7 @@ button { font-family: inherit; }
 }
 .nav-cta:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 30px rgba(14,165,233,0.3);
+    animation: pulse-shadow 1.8s infinite alternate ease-in-out;
 }
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 4px; }
 .nav-toggle span {
@@ -186,9 +186,18 @@ button { font-family: inherit; }
     background: linear-gradient(135deg, rgba(255,255,255,0.18), transparent);
     opacity: 0; transition: opacity 0.3s;
 }
+@keyframes pulse-shadow {
+    0% {
+        box-shadow: 0 4px 12px rgba(14, 165, 233, 0.25);
+    }
+    100% {
+        box-shadow: 0 8px 20px rgba(14, 165, 233, 0.55);
+    }
+}
+
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 12px 40px rgba(14,165,233,0.35);
+    animation: pulse-shadow 1.8s infinite alternate ease-in-out;
 }
 .btn-primary:hover::after { opacity: 1; }
 .btn-secondary {
@@ -882,4 +891,79 @@ button { font-family: inherit; }
     /* Form */
     .contact-form { padding: 20px; }
     .form-group input, .form-group select, .form-group textarea { padding: 12px 14px; font-size: 0.9rem; }
+}
+
+/* ================================================================
+   VIDEO MODAL
+   ================================================================ */
+.video-modal {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    z-index: 9999;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition);
+}
+
+.video-modal.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.video-modal-content {
+    position: relative;
+    width: 90%;
+    max-width: 900px;
+    background: var(--dark-surface);
+    border-radius: var(--radius-md);
+    padding: 16px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+    transform: scale(0.95) translateY(20px);
+    transition: transform var(--transition);
+}
+
+.video-modal.active .video-modal-content {
+    transform: scale(1) translateY(0);
+}
+
+.close-video {
+    position: absolute;
+    top: -40px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.close-video:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #000;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

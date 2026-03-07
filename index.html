@@ -48,7 +48,7 @@
                         Agendar Demonstração Gratuita
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
                     </a>
-                    <button class="btn-secondary">
+                    <button id="btnVerVideo" class="btn-secondary">
                         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                         Ver Vídeo
                     </button>
@@ -338,6 +338,18 @@
         </div>
     </footer>
 
+    <!-- ==================== VIDEO MODAL ==================== -->
+    <div id="videoModal" class="video-modal">
+        <div class="video-modal-content">
+            <button id="closeVideo" class="close-video" aria-label="Fechar Vídeo">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <div class="video-container">
+                <iframe id="youtubeIframe" src="https://www.youtube.com/embed/P1RiARV156s" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
     <!-- ==================== SCRIPTS ==================== -->
     <script>
         /* ---- Scroll Reveal ---- */
@@ -363,6 +375,31 @@
         /* ---- Navbar shrink on scroll ---- */
         window.addEventListener('scroll', () => {
             document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        /* ---- Video Modal Logic ---- */
+        const btnVerVideo = document.getElementById('btnVerVideo');
+        const videoModal = document.getElementById('videoModal');
+        const closeVideo = document.getElementById('closeVideo');
+        const youtubeIframe = document.getElementById('youtubeIframe');
+        const iframeSrc = youtubeIframe.src;
+
+        function openModal() {
+            videoModal.classList.add('active');
+            // Adding autoplay when opened
+            youtubeIframe.src = iframeSrc + "?autoplay=1";
+        }
+
+        function closeModal() {
+            videoModal.classList.remove('active');
+            // Remove src to stop video playing in background
+            youtubeIframe.src = iframeSrc;
+        }
+
+        btnVerVideo.addEventListener('click', openModal);
+        closeVideo.addEventListener('click', closeModal);
+        videoModal.addEventListener('click', (e) => {
+            if(e.target === videoModal) closeModal();
         });
     </script>
 </body>
