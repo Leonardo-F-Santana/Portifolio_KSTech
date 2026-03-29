@@ -51,9 +51,7 @@ button { font-family: inherit; }
 .navbar {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     padding: 14px 0;
-    background: rgba(7,7,13,0.6);
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    background: rgba(7,7,13,0.92);
     border-bottom: 1px solid var(--glass-border);
     transition: var(--transition);
 }
@@ -110,35 +108,33 @@ button { font-family: inherit; }
     display: flex; align-items: center; justify-content: center;
     padding: 130px 0 100px; overflow: hidden;
 }
-.hero-bg {
-    position: absolute; inset: 0; z-index: 0;
-}
-.hero-bg img {
-    width: 100%; height: 100%; object-fit: cover; opacity: 0.15;
-}
-.hero-bg-overlay {
-    position: absolute; inset: 0;
-    background: linear-gradient(180deg, rgba(7,7,13,0.6) 0%, var(--dark-bg) 90%);
-}
-.hero-bg-fallback {
-    position: absolute; inset: 0;
-    background:
-        radial-gradient(ellipse at 30% 20%, rgba(14,165,233,0.1) 0%, transparent 50%),
-        radial-gradient(ellipse at 70% 80%, rgba(99,102,241,0.08) 0%, transparent 50%);
-}
-.hero-grid {
-    position: absolute; inset: 0; opacity: 0.04; z-index: 1;
-    background-image:
-        linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px);
-    background-size: 60px 60px;
+/* ========== NEURAL BG (full-page fixed canvas) ========== */
+#neural-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    z-index: 0;
     pointer-events: none;
+}
+/* All page content floats above the canvas */
+.navbar, .hero, .clients, .features, .proof, .final-cta, .footer,
+.page-comecar, .video-modal {
+    position: relative;
+    z-index: 1;
 }
 .hero .container {
     display: flex; align-items: center; gap: 64px;
     position: relative; z-index: 2;
+    background: rgba(255,255,255,0.15); /* Bento style */
+    border: 1px solid rgba(255,255,255,0.15);
+    transform: translateZ(0);
+    will-change: transform, opacity;
+    border-radius: var(--radius-lg);
+    padding: 60px;
 }
-.hero-text { flex: 1; max-width: 540px; }
+.hero-text {
+    flex: 1; max-width: 540px;
+}
 .hero-badge {
     display: inline-flex; align-items: center; gap: 8px;
     padding: 7px 18px; border-radius: 50px; font-size: 0.73rem; font-weight: 700;
@@ -170,7 +166,7 @@ button { font-family: inherit; }
     font-size: clamp(1rem, 2vw, 1.15rem); font-weight: 400;
     line-height: 1.75; color: var(--text-secondary); margin-bottom: 38px;
 }
-.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-direction: row; flex-wrap: nowrap; }
 
 /* ========== BUTTONS GLOBAL ========== */
 .btn-primary {
@@ -263,6 +259,10 @@ button { font-family: inherit; }
 .clients {
     padding: 60px 0 80px;
     position: relative; overflow: hidden;
+    background: rgba(255, 255, 255, 0.12);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    width: 100%;
 }
 .clients-title {
     text-align: center; font-size: 0.82rem; font-weight: 500;
@@ -276,6 +276,8 @@ button { font-family: inherit; }
 .marquee-wrapper:hover .marquee-track { animation-play-state: paused; }
 .marquee-track {
     display: flex; gap: 32px; width: max-content;
+    transform: translateZ(0);
+    will-change: transform;
 }
 .marquee-track.left  { animation: marquee-left  40s linear infinite; }
 .marquee-track.right { animation: marquee-right 40s linear infinite; }
@@ -294,6 +296,8 @@ button { font-family: inherit; }
     background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
     font-size: 0.85rem; font-weight: 500; color: var(--text-secondary);
     white-space: nowrap;
+    transform: translateZ(0);
+    will-change: transform;
     transition: border-color 0.3s, color 0.3s;
 }
 .marquee-item:hover { border-color: rgba(255,255,255,0.15); color: #fff; }
@@ -316,10 +320,12 @@ button { font-family: inherit; }
 /* ---- BENTO CARD GLOW (Cosmos.so white border glow) ---- */
 .bento-card {
     position: relative; padding: 40px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.07);
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.15);
     border-radius: var(--radius-lg);
     overflow: hidden;
+    transform: translateZ(0);
+    will-change: transform, opacity;
     transition: transform var(--transition), box-shadow var(--transition);
 }
 /* Glow overlay that follows cursor */
@@ -564,16 +570,33 @@ button { font-family: inherit; }
 .final-cta .btn-primary:hover .btn-icon {
     transform: translateX(4px);
 }
-/* Hero button: arrow slides but button width stays fixed */
+/* Hero video button: primary CTA */
 .hero .btn-primary {
-    min-width: 340px; justify-content: center;
+    justify-content: center;
+    white-space: nowrap;
+    padding: 18px 48px;
+    font-size: 1.1rem;
+    animation: hero-idle-pulse 2.5s infinite alternate ease-in-out;
+}
+@keyframes hero-idle-pulse {
+    0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+    100% { box-shadow: 0 0 16px 2px rgba(14, 165, 233, 0.25); }
+}
+.hero .btn-primary:hover {
+    transform: translateY(-3px) scale(1.05);
+    animation: hero-hover-pulse 1.2s infinite alternate ease-in-out;
+}
+@keyframes hero-hover-pulse {
+    0% { box-shadow: 0 4px 15px rgba(14, 165, 233, 0.4); transform: translateY(-3px) scale(1.05); }
+    100% { box-shadow: 0 8px 32px rgba(99, 102, 241, 0.7); transform: translateY(-3px) scale(1.06); }
 }
 .hero .btn-primary .btn-icon {
-    width: 20px; height: 20px;
+    width: 22px; height: 22px;
+    margin-right: 4px;
     transition: transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .hero .btn-primary:hover .btn-icon {
-    transform: translateX(6px);
+    transform: scale(1.15);
 }
 
 /* ========== FOOTER ========== */
@@ -601,11 +624,12 @@ button { font-family: inherit; }
 
 /* ========== SCROLL REVEAL ========== */
 .reveal {
-    opacity: 0; transform: translateY(40px);
+    opacity: 0; transform: translateY(40px) translateZ(0);
+    will-change: transform, opacity;
     transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
                 transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal.visible { opacity: 1; transform: translateY(0) translateZ(0); }
 .reveal-delay-1 { transition-delay: 0.1s; }
 .reveal-delay-2 { transition-delay: 0.2s; }
 .reveal-delay-3 { transition-delay: 0.3s; }
@@ -801,7 +825,7 @@ button { font-family: inherit; }
     .nav-links.open {
         display: flex; flex-direction: column;
         position: absolute; top: 100%; left: 0; right: 0;
-        background: rgba(7,7,13,0.95); backdrop-filter: blur(20px);
+        background: rgba(7,7,13,0.98);
         padding: 24px; gap: 20px;
         border-bottom: 1px solid var(--glass-border);
     }
@@ -900,9 +924,7 @@ button { font-family: inherit; }
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
     z-index: 9999;
-    background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
+    background: rgba(7, 7, 13, 0.95);
     display: flex;
     align-items: center;
     justify-content: center;

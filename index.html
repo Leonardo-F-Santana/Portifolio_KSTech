@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <canvas id="neural-bg"></canvas>
 
     <nav class="navbar" id="navbar">
         <div class="container">
@@ -31,24 +32,14 @@
 
 
     <section class="hero" id="hero">
-        <div class="hero-bg">
-            <img src="img_projeto/fundo_tecnologico.jpg" alt="" onerror="this.style.display='none'">
-            <div class="hero-bg-overlay"></div>
-            <div class="hero-bg-fallback"></div>
-        </div>
-        <div class="hero-grid"></div>
         <div class="container">
             <div class="hero-text reveal">
                 <div class="hero-badge">SaaS Offline-First</div>
                 <h1>A Gestão do Seu Condomínio <span class="gradient-text">Nunca Para,</span> Nem Sem Internet.</h1>
                 <h2>O primeiro SaaS com tecnologia Offline-First. Garanta a segurança na portaria e o controlo na palma da mão, blindado contra falhas de conexão.</h2>
                 <div class="hero-actions">
-                    <a href="comecar.html" class="btn-primary">
-                        Agendar Demonstração Gratuita
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-                    </a>
-                    <button id="btnVerVideo" class="btn-secondary">
-                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    <button id="btnVerVideo" class="btn-primary">
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
                         Ver Vídeo
                     </button>
                 </div>
@@ -223,8 +214,8 @@
                 <div class="bento-card card-large reveal" data-glow>
                     <div class="card-portaria">
                         <div class="portaria-images">
-                            <img src="img_projeto/Portaria2.jpg" alt="Portaria — Solicitações">
-                            <img src="img_projeto/Portaria3.jpg" alt="Portaria — Encomendas">
+                            <img src="img_projeto/Portaria2.jpg" alt="Portaria — Solicitações" loading="lazy">
+                            <img src="img_projeto/Portaria3.jpg" alt="Portaria — Encomendas" loading="lazy">
                         </div>
                         <div class="bento-card-content">
                             <div class="bento-icon">🛡️</div>
@@ -242,9 +233,9 @@
                         <p>Controlo Centralizado. Administra 1 ou 100 condomínios com um único login. Arquitetura isolada que garante total privacidade e velocidade.</p>
                     </div>
                     <div class="sindico-images">
-                        <img src="img_projeto/sindico2.png" alt="App do Síndico — Moradores">
-                        <img src="img_projeto/sindico3.png" alt="App do Síndico — Solicitações">
-                        <img src="img_projeto/sindico4.png" alt="App do Síndico — Avisos">
+                        <img src="img_projeto/sindico2.png" alt="App do Síndico — Moradores" loading="lazy">
+                        <img src="img_projeto/sindico3.png" alt="App do Síndico — Solicitações" loading="lazy">
+                        <img src="img_projeto/sindico4.png" alt="App do Síndico — Avisos" loading="lazy">
                     </div>
                 </div>
 
@@ -256,9 +247,9 @@
                         <p>Autonomia na Palma da Mão. Reservas de espaços, comunicados oficiais e aprovação de visitantes diretamente pelo telemóvel do morador (Progressive Web App).</p>
                     </div>
                     <div class="morador-images">
-                        <img src="img_projeto/morador1.png" alt="Portal do Morador — Reservas">
-                        <img src="img_projeto/morador2.png" alt="Portal do Morador — Dashboard">
-                        <img src="img_projeto/morador3.png" alt="Portal do Morador — Avisos">
+                        <img src="img_projeto/morador1.png" alt="Portal do Morador — Reservas" loading="lazy">
+                        <img src="img_projeto/morador2.png" alt="Portal do Morador — Dashboard" loading="lazy">
+                        <img src="img_projeto/morador3.png" alt="Portal do Morador — Avisos" loading="lazy">
                     </div>
                 </div>
             </div>
@@ -298,9 +289,9 @@
                     </div>
                 </div>
                 <div class="proof-image reveal reveal-delay-1">
-                    <img src="img_projeto/Portaria4.jpg" alt="Portaria — Vista Completa" class="proof-img-desktop">
-                    <img src="img_projeto/morador4.png" alt="Portal do Morador — Cobranças" class="proof-img-phone">
-                    <img src="img_projeto/morador5.png" alt="Portal do Morador — Mensagens" class="proof-img-phone">
+                    <img src="img_projeto/Portaria4.jpg" alt="Portaria — Vista Completa" class="proof-img-desktop" loading="lazy">
+                    <img src="img_projeto/morador4.png" alt="Portal do Morador — Cobranças" class="proof-img-phone" loading="lazy">
+                    <img src="img_projeto/morador5.png" alt="Portal do Morador — Mensagens" class="proof-img-phone" loading="lazy">
                 </div>
             </div>
         </div>
@@ -351,8 +342,13 @@
     <!-- ==================== SCRIPTS ==================== -->
     <script>
         /* ---- Scroll Reveal ---- */
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(e => { 
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible'); 
+                    obs.unobserve(e.target);
+                }
+            });
         }, { threshold: 0.12 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
@@ -400,5 +396,6 @@
             if(e.target === videoModal) closeModal();
         });
     </script>
+    <script src="neural-bg.js"></script>
 </body>
 </html>

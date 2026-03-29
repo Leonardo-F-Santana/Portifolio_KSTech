@@ -104,21 +104,21 @@
                         <p>Preencha o formulário e um dos nossos consultores entrará em contacto para mostrar como o KS Tech pode transformar a gestão do seu condomínio.</p>
                         <div class="contact-perks">
                             <div class="contact-perk">
-                                <div class="contact-perk-icon">🎯</div>
+                                <div class="contact-perk-icon"></div>
                                 <div>
                                     <h4>Demonstração personalizada</h4>
                                     <p>Adaptada ao tamanho e às necessidades do seu condomínio.</p>
                                 </div>
                             </div>
                             <div class="contact-perk">
-                                <div class="contact-perk-icon">⏱️</div>
+                                <div class="contact-perk-icon"></div>
                                 <div>
                                     <h4>Implementação em 24h</h4>
                                     <p>Sem servidores. Configuramos tudo e entrega ao seu condomínio no mesmo dia.</p>
                                 </div>
                             </div>
                             <div class="contact-perk">
-                                <div class="contact-perk-icon">🤝</div>
+                                <div class="contact-perk-icon"></div>
                                 <div>
                                     <h4>Sem compromisso</h4>
                                     <p>Teste gratuitamente durante 14 dias. Sem cartão de crédito.</p>
@@ -183,9 +183,14 @@
     <!-- ==================== SCRIPTS ==================== -->
     <script>
         /* ---- Scroll Reveal ---- */
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.12 });
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(e => { 
+                if (e.isIntersecting) {
+                    e.target.classList.add('visible'); 
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
         /* ---- Card mouse glow ---- */
