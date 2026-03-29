@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Senha — KS Tech | Gestão Condominial Inteligente</title>
+    <meta name="description" content="Recupere o acesso à sua conta KS Tech. Enviaremos um link de redefinição para o seu e-mail.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="img_projeto/meu_logo.png" alt="KS Tech" onerror="this.style.display='none'">
+                <span class="nav-brand-text">KS Tech</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#funcionalidades">Funcionalidades</a>
+                <a href="index.html#clientes">Clientes</a>
+                <a href="login.html" class="nav-cta">Login</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== RECOVERY PAGE ==================== -->
+    <main class="auth-page" id="authPage">
+
+        <!-- Floating particles -->
+        <div class="auth-particles">
+            <div class="auth-particle"></div>
+            <div class="auth-particle"></div>
+            <div class="auth-particle"></div>
+            <div class="auth-particle"></div>
+            <div class="auth-particle"></div>
+            <div class="auth-particle"></div>
+        </div>
+
+        <div class="auth-card" id="authCard" data-glow>
+
+            <!-- Logo -->
+            <a href="index.html" class="auth-logo">
+                <img src="img_projeto/meu_logo.png" alt="KS Tech" onerror="this.style.display='none'">
+                <span class="auth-logo-text">KS Tech</span>
+            </a>
+
+            <!-- ===== FORM STATE ===== -->
+            <div id="recoveryFormState">
+                <!-- Header -->
+                <div class="auth-header">
+                    <h1>Recuperar senha</h1>
+                    <p>Informe o e-mail cadastrado e enviaremos um link para redefinir sua senha</p>
+                </div>
+
+                <!-- Recovery Form -->
+                <form class="auth-form" id="recoveryForm" onsubmit="handleRecovery(event)" novalidate>
+
+                    <div class="form-group">
+                        <label for="recovery-email">E-mail cadastrado</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                            </svg>
+                            <input type="email" id="recovery-email" name="email" placeholder="seu@email.com" required autocomplete="email">
+                        </div>
+                        <span class="form-error">Insira um e-mail válido</span>
+                    </div>
+
+                    <button type="submit" class="auth-btn" id="recoveryBtn">
+                        <span class="btn-text">Enviar link de recuperação</span>
+                        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                        <span class="btn-spinner"></span>
+                    </button>
+                </form>
+
+                <!-- Links -->
+                <div class="auth-links">
+                    <a href="login.html">
+                        <span style="display: inline-flex; align-items: center; gap: 6px;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+                            Voltar ao login
+                        </span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- ===== SUCCESS STATE ===== -->
+            <div class="auth-feedback" id="recoverySuccess">
+                <div class="feedback-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h2>E-mail enviado!</h2>
+                <p>Enviamos um link de recuperação para <strong id="sentEmail"></strong>. Verifique sua caixa de entrada e spam.</p>
+                <a href="login.html" class="auth-link-primary">
+                    Voltar ao login
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <span class="footer-brand">KS Tech</span>
+            <div class="footer-links">
+                <a href="index.html#funcionalidades">Funcionalidades</a>
+                <a href="index.html#clientes">Clientes</a>
+                <a href="comecar.html#precos">Preços</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Privacidade</a>
+            </div>
+            <span class="footer-copy">© 2026 KS Tech. Todos os direitos reservados.</span>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        /* ---- Mouse Glow on Auth Card ---- */
+        const authCard = document.getElementById('authCard');
+        authCard.addEventListener('mousemove', (e) => {
+            const r = authCard.getBoundingClientRect();
+            authCard.style.setProperty('--mouse-x', (e.clientX - r.left) + 'px');
+            authCard.style.setProperty('--mouse-y', (e.clientY - r.top) + 'px');
+        });
+
+        /* ---- Mobile Nav Toggle ---- */
+        document.getElementById('navToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        /* ---- Navbar shrink on scroll ---- */
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        /* ---- Recovery Form Handler ---- */
+        function handleRecovery(e) {
+            e.preventDefault();
+            const form = e.target;
+            const email = form.querySelector('#recovery-email');
+
+            // Reset states
+            form.querySelectorAll('.form-group').forEach(g => g.classList.remove('error'));
+
+            // Validate email
+            if (!email.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                email.closest('.form-group').classList.add('error');
+                return;
+            }
+
+            // Simulate loading
+            const btn = document.getElementById('recoveryBtn');
+            btn.classList.add('loading');
+
+            setTimeout(() => {
+                btn.classList.remove('loading');
+
+                // Show success state
+                document.getElementById('sentEmail').textContent = email.value;
+                document.getElementById('recoveryFormState').style.display = 'none';
+                document.getElementById('recoverySuccess').classList.add('visible');
+
+            }, 2000);
+        }
+    </script>
+</body>
+</html>

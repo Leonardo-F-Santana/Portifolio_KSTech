@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Conta — KS Tech | Gestão Condominial Inteligente</title>
+    <meta name="description" content="Crie sua conta KS Tech e comece a gerenciar seu condomínio com tecnologia Offline-First.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+
+    <!-- ==================== NAVBAR ==================== -->
+    <nav class="navbar" id="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <img src="img_projeto/meu_logo.png" alt="KS Tech" onerror="this.style.display='none'">
+                <span class="nav-brand-text">KS Tech</span>
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="index.html#funcionalidades">Funcionalidades</a>
+                <a href="index.html#clientes">Clientes</a>
+                <a href="login.html" class="nav-cta">Login</a>
+            </div>
+            <button class="nav-toggle" id="navToggle" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ==================== CADASTRO PAGE ==================== -->
+    <main class="auth-page" id="authPage">
+
+        <!-- Floating particles -->
+        <div class="auth-particles">
+            <div class="auth-particle"></div>
+            <div class="auth-particle"></div>
+            <div class="auth-particle"></div>
+            <div class="auth-particle"></div>
+            <div class="auth-particle"></div>
+            <div class="auth-particle"></div>
+        </div>
+
+        <div class="auth-card" id="authCard" data-glow style="max-width: 520px;">
+
+            <!-- Logo -->
+            <a href="index.html" class="auth-logo">
+                <img src="img_projeto/meu_logo.png" alt="KS Tech" onerror="this.style.display='none'">
+                <span class="auth-logo-text">KS Tech</span>
+            </a>
+
+            <!-- Header -->
+            <div class="auth-header">
+                <h1>Crie sua conta</h1>
+                <p>Junte-se a centenas de condomínios que confiam na KS Tech</p>
+            </div>
+
+            <!-- Registration Form -->
+            <form class="auth-form" id="cadastroForm" onsubmit="handleCadastro(event)" novalidate>
+
+                <!-- Nome Completo -->
+                <div class="form-group">
+                    <label for="reg-nome">Nome Completo</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <input type="text" id="reg-nome" name="nome" placeholder="Ex: João da Silva" required autocomplete="name">
+                    </div>
+                    <span class="form-error">Nome completo é obrigatório</span>
+                </div>
+
+                <!-- E-mail -->
+                <div class="form-group">
+                    <label for="reg-email">E-mail</label>
+                    <div class="input-wrapper">
+                        <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                        </svg>
+                        <input type="email" id="reg-email" name="email" placeholder="seu@email.com" required autocomplete="email">
+                    </div>
+                    <span class="form-error">Insira um e-mail válido</span>
+                </div>
+
+                <!-- Telefone + Tipo de Perfil (side by side) -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reg-telefone">Telefone</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <input type="tel" id="reg-telefone" name="telefone" placeholder="(11) 99999-9999" required autocomplete="tel">
+                        </div>
+                        <span class="form-error">Telefone inválido</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-perfil">Tipo de Perfil</label>
+                        <select id="reg-perfil" name="perfil" required>
+                            <option value="" disabled selected>Selecione...</option>
+                            <option value="sindico">Síndico</option>
+                            <option value="morador">Morador</option>
+                            <option value="portaria">Portaria</option>
+                        </select>
+                        <span class="form-error">Selecione um perfil</span>
+                    </div>
+                </div>
+
+                <!-- Senha + Confirmar Senha (side by side) -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="reg-password">Senha</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                            </svg>
+                            <input type="password" id="reg-password" name="password" placeholder="Mín. 8 caracteres" required autocomplete="new-password">
+                            <button type="button" class="password-toggle" onclick="togglePassword('reg-password', this)" aria-label="Mostrar senha">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="password-strength" id="passwordStrength">
+                            <div class="strength-bar" id="str1"></div>
+                            <div class="strength-bar" id="str2"></div>
+                            <div class="strength-bar" id="str3"></div>
+                            <div class="strength-bar" id="str4"></div>
+                        </div>
+                        <span class="strength-label" id="strengthLabel"></span>
+                        <span class="form-error">Mínimo de 8 caracteres</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="reg-confirm-password">Confirmar Senha</label>
+                        <div class="input-wrapper">
+                            <svg class="input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                            <input type="password" id="reg-confirm-password" name="confirmPassword" placeholder="Repita a senha" required autocomplete="new-password">
+                        </div>
+                        <span class="form-error">As senhas não coincidem</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="auth-btn" id="cadastroBtn">
+                    <span class="btn-text">Criar Conta</span>
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    <span class="btn-spinner"></span>
+                </button>
+            </form>
+
+            <!-- Links -->
+            <div class="auth-links">
+                <div class="auth-divider"><span>ou</span></div>
+                <span style="color: var(--text-secondary); font-size: 0.88rem;">
+                    Já tem uma conta?
+                    <a href="login.html" class="auth-link-primary">Entrar</a>
+                </span>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <span class="footer-brand">KS Tech</span>
+            <div class="footer-links">
+                <a href="index.html#funcionalidades">Funcionalidades</a>
+                <a href="index.html#clientes">Clientes</a>
+                <a href="comecar.html#precos">Preços</a>
+                <a href="#">Termos de Uso</a>
+                <a href="#">Privacidade</a>
+            </div>
+            <span class="footer-copy">© 2026 KS Tech. Todos os direitos reservados.</span>
+        </div>
+    </footer>
+
+    <!-- ==================== SCRIPTS ==================== -->
+    <script>
+        /* ---- Mouse Glow on Auth Card ---- */
+        const authCard = document.getElementById('authCard');
+        authCard.addEventListener('mousemove', (e) => {
+            const r = authCard.getBoundingClientRect();
+            authCard.style.setProperty('--mouse-x', (e.clientX - r.left) + 'px');
+            authCard.style.setProperty('--mouse-y', (e.clientY - r.top) + 'px');
+        });
+
+        /* ---- Mobile Nav Toggle ---- */
+        document.getElementById('navToggle').addEventListener('click', () => {
+            document.getElementById('navLinks').classList.toggle('open');
+        });
+
+        /* ---- Navbar shrink on scroll ---- */
+        window.addEventListener('scroll', () => {
+            document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        /* ---- Toggle Password Visibility ---- */
+        function togglePassword(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const isPassword = input.type === 'password';
+            input.type = isPassword ? 'text' : 'password';
+            btn.innerHTML = isPassword
+                ? '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.88 9.88a3 3 0 1 0 4.24 4.24"/><path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a13.16 13.16 0 0 1-1.67 2.68"/><path d="M6.61 6.61A13.526 13.526 0 0 0 2 12s3 7 10 7a9.74 9.74 0 0 0 5.39-1.61"/><line x1="2" x2="22" y1="2" y2="22"/></svg>'
+                : '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>';
+        }
+
+        /* ---- Phone Mask (BR format) ---- */
+        const phoneInput = document.getElementById('reg-telefone');
+        phoneInput.addEventListener('input', (e) => {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 11) value = value.slice(0, 11);
+
+            if (value.length > 0) {
+                if (value.length <= 2) {
+                    value = `(${value}`;
+                } else if (value.length <= 7) {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2)}`;
+                } else {
+                    value = `(${value.slice(0, 2)}) ${value.slice(2, 7)}-${value.slice(7)}`;
+                }
+            }
+            e.target.value = value;
+        });
+
+        /* ---- Password Strength Meter ---- */
+        const passwordInput = document.getElementById('reg-password');
+        const bars = [
+            document.getElementById('str1'),
+            document.getElementById('str2'),
+            document.getElementById('str3'),
+            document.getElementById('str4')
+        ];
+        const strengthLabel = document.getElementById('strengthLabel');
+
+        passwordInput.addEventListener('input', () => {
+            const val = passwordInput.value;
+            let score = 0;
+
+            if (val.length >= 8) score++;
+            if (/[a-z]/.test(val) && /[A-Z]/.test(val)) score++;
+            if (/\d/.test(val)) score++;
+            if (/[^a-zA-Z0-9]/.test(val)) score++;
+
+            const levels = ['', 'weak', 'medium', 'medium', 'strong'];
+            const labels = ['', 'Fraca', 'Razoável', 'Boa', 'Forte'];
+            const level = levels[score] || '';
+            const label = labels[score] || '';
+
+            bars.forEach((bar, i) => {
+                bar.className = 'strength-bar';
+                if (i < score) {
+                    bar.classList.add('active', level);
+                }
+            });
+
+            strengthLabel.textContent = val.length > 0 ? label : '';
+            strengthLabel.className = 'strength-label ' + level;
+        });
+
+        /* ---- Registration Form Handler ---- */
+        function handleCadastro(e) {
+            e.preventDefault();
+            const form = e.target;
+            let valid = true;
+
+            // Reset states
+            form.querySelectorAll('.form-group').forEach(g => g.classList.remove('error', 'success'));
+
+            const nome = form.querySelector('#reg-nome');
+            const email = form.querySelector('#reg-email');
+            const telefone = form.querySelector('#reg-telefone');
+            const perfil = form.querySelector('#reg-perfil');
+            const password = form.querySelector('#reg-password');
+            const confirmPassword = form.querySelector('#reg-confirm-password');
+
+            // Validate nome
+            if (!nome.value.trim() || nome.value.trim().split(' ').length < 2) {
+                nome.closest('.form-group').classList.add('error');
+                valid = false;
+            }
+
+            // Validate email
+            if (!email.value || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
+                email.closest('.form-group').classList.add('error');
+                valid = false;
+            }
+
+            // Validate telefone
+            const phoneDigits = telefone.value.replace(/\D/g, '');
+            if (phoneDigits.length < 10) {
+                telefone.closest('.form-group').classList.add('error');
+                valid = false;
+            }
+
+            // Validate perfil
+            if (!perfil.value) {
+                perfil.closest('.form-group').classList.add('error');
+                valid = false;
+            }
+
+            // Validate password
+            if (!password.value || password.value.length < 8) {
+                password.closest('.form-group').classList.add('error');
+                valid = false;
+            }
+
+            // Validate confirm password
+            if (confirmPassword.value !== password.value) {
+                confirmPassword.closest('.form-group').classList.add('error');
+                valid = false;
+            }
+
+            if (!valid) return;
+
+            // Simulate loading
+            const btn = document.getElementById('cadastroBtn');
+            btn.classList.add('loading');
+
+            setTimeout(() => {
+                btn.classList.remove('loading');
+                alert('Conta criada com sucesso! (Simulação)');
+                // Redirect to login
+                window.location.href = 'login.html';
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
