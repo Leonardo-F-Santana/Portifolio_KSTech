@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="neural-bg"></canvas>
+    <video id="video-bg" autoplay loop muted playsinline src="video/apresentacao.MP4"></video>
+    <div id="video-overlay"></div>
 
     <nav class="navbar" id="navbar">
         <div class="container">
@@ -396,6 +397,5 @@
             if(e.target === videoModal) closeModal();
         });
     </script>
-    <script src="neural-bg.js"></script>
 </body>
 </html>

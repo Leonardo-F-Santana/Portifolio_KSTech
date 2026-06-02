@@ -8,8 +8,8 @@
 html { scroll-behavior: smooth; font-size: 16px; }
 body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    background: #07070d;
-    color: #e4e4e7;
+    background: #f5f6fa;
+    color: var(--text-primary);
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -28,11 +28,11 @@ button { font-family: inherit; }
     --dark-bg: #07070d;
     --dark-surface: #0e0e18;
     --dark-card: rgba(255,255,255,0.04);
-    --glass-border: rgba(255,255,255,0.08);
+    --glass-border: rgba(0, 0, 0, 0.08);
     --glass-bg: rgba(255,255,255,0.03);
     --light-bg: #f5f6fa;
-    --text-primary: #f0f0f5;
-    --text-secondary: #9ca3af;
+    --text-primary: #1a1a2e;
+    --text-secondary: #475569;
     --text-dark: #1a1a2e;
     --text-dark-secondary: #64748b;
     --radius-xl: 28px;
@@ -41,7 +41,7 @@ button { font-family: inherit; }
     --radius-sm: 12px;
     --max-w: 1240px;
     --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    --glow-white: 0 0 20px rgba(255,255,255,0.08), 0 0 40px rgba(255,255,255,0.04);
+    --glow-white: 0 0 20px rgba(0,0,0,0.05), 0 0 40px rgba(0,0,0,0.02);
 }
 
 /* ========== UTILITY ========== */
@@ -51,13 +51,17 @@ button { font-family: inherit; }
 .navbar {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     padding: 14px 0;
-    background: rgba(7,7,13,0.92);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     border-bottom: 1px solid var(--glass-border);
     transition: var(--transition);
 }
 .navbar.scrolled {
     padding: 10px 0;
-    background: rgba(7,7,13,0.92);
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
 }
 .navbar .container {
     display: flex; align-items: center; justify-content: space-between;
@@ -83,7 +87,7 @@ button { font-family: inherit; }
     content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
     background: var(--cyan); transition: width 0.3s;
 }
-.nav-links a:hover { color: #fff; }
+.nav-links a:hover { color: var(--text-primary); }
 .nav-links a:hover::after { width: 100%; }
 .nav-cta {
     padding: 10px 26px; border-radius: 50px; font-weight: 600; font-size: 0.875rem;
@@ -108,15 +112,25 @@ button { font-family: inherit; }
     display: flex; align-items: center; justify-content: center;
     padding: 130px 0 100px; overflow: hidden;
 }
-/* ========== NEURAL BG (full-page fixed canvas) ========== */
-#neural-bg {
+/* ========== VIDEO BG (full-page fixed video) ========== */
+#video-bg {
     position: fixed;
     top: 0; left: 0;
     width: 100vw; height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity 0.1s ease-out;
+}
+#video-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw; height: 100vh;
+    background: linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0) 30%, rgba(245,246,250,0.9) 80%, #f5f6fa 100%);
     z-index: 0;
     pointer-events: none;
 }
-/* All page content floats above the canvas */
+/* All page content floats above the background */
 .navbar, .hero, .clients, .features, .proof, .final-cta, .footer,
 .page-comecar, .video-modal {
     position: relative;
@@ -125,12 +139,15 @@ button { font-family: inherit; }
 .hero .container {
     display: flex; align-items: center; gap: 64px;
     position: relative; z-index: 2;
-    background: rgba(255,255,255,0.15); /* Bento style */
-    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.5); /* Light glass style */
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
     transform: translateZ(0);
     will-change: transform, opacity;
     border-radius: var(--radius-lg);
     padding: 60px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
 }
 .hero-text {
     flex: 1; max-width: 540px;
@@ -259,16 +276,18 @@ button { font-family: inherit; }
 .clients {
     padding: 60px 0 80px;
     position: relative; overflow: hidden;
-    background: rgba(255, 255, 255, 0.12);
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
     width: 100%;
 }
 .clients-title {
-    text-align: center; font-size: 0.82rem; font-weight: 500;
-    color: var(--text-secondary); text-transform: uppercase;
+    text-align: center; font-size: 0.9rem; font-weight: 700;
+    color: var(--text-primary); text-transform: uppercase;
     letter-spacing: 0.12em; margin-bottom: 36px;
-    opacity: 0.7;
+    opacity: 1;
 }
 .marquee-wrapper {
     display: flex; flex-direction: column; gap: 16px;
@@ -293,19 +312,21 @@ button { font-family: inherit; }
     flex-shrink: 0;
     display: flex; align-items: center; gap: 10px;
     padding: 12px 28px; border-radius: 50px;
-    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.06);
-    font-size: 0.85rem; font-weight: 500; color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.7); border: 1px solid var(--glass-border);
+    font-size: 0.85rem; font-weight: 600; color: var(--text-primary);
     white-space: nowrap;
     transform: translateZ(0);
     will-change: transform;
-    transition: border-color 0.3s, color 0.3s;
+    transition: border-color 0.3s, color 0.3s, transform 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
 }
-.marquee-item:hover { border-color: rgba(255,255,255,0.15); color: #fff; }
+.marquee-item:hover { border-color: rgba(0,0,0,0.15); color: var(--cyan); transform: translateY(-2px); }
 .marquee-item svg { width: 20px; height: 20px; opacity: 0.5; }
 
 /* ========== FEATURES BENTO GRID ========== */
 .features {
     padding: 120px 0; position: relative;
+    background: linear-gradient(to bottom, transparent 0%, #f5f6fa 20%, #f5f6fa 100%);
 }
 .features::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
@@ -320,8 +341,10 @@ button { font-family: inherit; }
 /* ---- BENTO CARD GLOW (Cosmos.so white border glow) ---- */
 .bento-card {
     position: relative; padding: 40px;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
     overflow: hidden;
     transform: translateZ(0);
@@ -469,17 +492,17 @@ button { font-family: inherit; }
 
 /* ========== PROOF / HOW IT WORKS (LIGHT) ========== */
 .proof {
-    background: var(--light-bg); padding: 120px 0; position: relative;
+    background: #f5f6fa; padding: 120px 0; position: relative;
 }
 .proof-header { max-width: 560px; margin-bottom: 72px; }
 .proof-header .section-label { color: var(--indigo); }
 .proof-header h2 {
     font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 800;
     line-height: 1.1; letter-spacing: -0.03em;
-    color: var(--text-dark); margin-bottom: 18px;
+    color: var(--text-primary); margin-bottom: 18px;
 }
 .proof-header p {
-    font-size: 1.05rem; color: var(--text-dark-secondary); line-height: 1.7;
+    font-size: 1.05rem; color: var(--text-secondary); line-height: 1.7;
 }
 .proof-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
@@ -488,9 +511,9 @@ button { font-family: inherit; }
 .benefit-item {
     display: flex; gap: 20px; align-items: flex-start;
     padding: 24px; border-radius: var(--radius-md);
-    background: #fff;
-    border: 1px solid #e5e7eb;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     transition: transform 0.3s, box-shadow 0.3s;
 }
 .benefit-item:hover {
@@ -506,10 +529,10 @@ button { font-family: inherit; }
 .benefit-icon.icon-violet { background: linear-gradient(135deg, #ede9fe, #f5f3ff); }
 .benefit-icon.icon-green  { background: linear-gradient(135deg, #d1fae5, #ecfdf5); }
 .benefit-item h3 {
-    font-size: 1.08rem; font-weight: 700; color: var(--text-dark); margin-bottom: 6px;
+    font-size: 1.08rem; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;
 }
 .benefit-item p {
-    font-size: 0.88rem; color: var(--text-dark-secondary); line-height: 1.65;
+    font-size: 0.88rem; color: var(--text-secondary); line-height: 1.65;
 }
 .proof-image {
     position: relative; min-height: 480px;
